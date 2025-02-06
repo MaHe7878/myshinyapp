@@ -1,11 +1,13 @@
 library(shiny)
 
 ui <- fluidPage(
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("My First Shiny"),
+  h2("my app from scratch"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-        "Number of bins:",
+      sliderInput(
+        inputId = "newbins",
+        label = "Number of bins:",
         min = 1,
         max = 50,
         value = 30
