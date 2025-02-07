@@ -41,6 +41,10 @@ ui <- fluidPage(
     )
   ),
   textOutput(outputId = "Nombre_personnes"),
+  actionButton(
+    inputId = "bouton",
+    label = "CLIQUE WESH !"
+  ),
   DTOutput(outputId = "StarwarsTable")
 )
 
@@ -72,6 +76,14 @@ server <- function(input, output) {
       starwars |>
         filter(height > input$taille) |>
         filter(gender %in% input$choix_genre)
+  })
+  
+  observeEvent(c(input$bouton, input$taille), {
+    message("T'as cliqué fdp.")
+    showNotification(
+      "La valeur du slider a changé...",
+      type = "message"
+    )
   })
 }
 
